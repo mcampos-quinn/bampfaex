@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Series start date:</strong>
+  <%= @series.series_start_date %>
+</p>
+
+<p>
+  <strong>Series end date:</strong>
+  <%= @series.series_end_date %>
+</p>
+
+<p>
+  <strong>Series type:</strong>
+  <%= @series.series_type %>
+</p>
+
+<p>
+  <strong>Series title:</strong>
+  <%= @series.series_title %>
+</p>
+
+<p>
+  <strong>Series description:</strong>
+  <%= @series.series_description %>
+</p>
+
+<p>
+  <strong>Series credits:</strong>
+  <%= @series.series_credits %>
+</p>
+
+<p>
+  <strong>Series short description:</strong>
+  <%= @series.series_short_description %>
+</p>
+
+<%= link_to 'Edit', edit_series_path(@series) %> |
+<%= link_to 'Back', series_index_path %>

@@ -1,0 +1,52 @@
+<%= form_with(model: series, local: true) do |form| %>
+  <% if series.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(series.errors.count, "error") %> prohibited this series from being saved:</h2>
+
+      <ul>
+      <% series.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :series_start_date %>
+    <%= form.datetime_select :series_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :series_end_date %>
+    <%= form.datetime_select :series_end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :series_type %>
+    <%= form.text_field :series_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :series_title %>
+    <%= form.text_field :series_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :series_description %>
+    <%= form.text_area :series_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :series_credits %>
+    <%= form.text_area :series_credits %>
+  </div>
+
+  <div class="field">
+    <%= form.label :series_short_description %>
+    <%= form.text_area :series_short_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2023-08-18 13:19:39
+  showtimes: 2023-08-18 13:19:39
+  screening_title: MyString
+  description: MyText
+  legacy_credit_text: MyText
+  location: MyString
+
+two:
+  date: 2023-08-18 13:19:39
+  showtimes: 2023-08-18 13:19:39
+  screening_title: MyString
+  description: MyText
+  legacy_credit_text: MyText
+  location: MyString
