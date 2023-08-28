@@ -1,7 +1,15 @@
+#!/bin/env ruby
+
+ENV['RAILS_ENV'] = "development"
+require '../bampfaex/config/environment.rb'
 require 'csv'
 
-items = []
-CSV.foreach('link/to/file.csv', headers: true) do |row|
-  items << row.to_h
+events = []
+csv_path = 'film_screenings_cleaned.csv'
+headers = CSV.foreach(csv_path).first
+CSV.foreach(csv_path, headers: true) do |row|
+  events << row.to_h
 end
-Item.import(items)
+puts  events
+# require Event
+puts Event.columns.map(&:name)
