@@ -4,7 +4,7 @@ class Work < ApplicationRecord
 
   has_many :people, :through => :relations
 
-  belongs_to :series
-  belongs_to :event
+  belongs_to :series, optional: true
+  belongs_to :event, optional: true
 
 end

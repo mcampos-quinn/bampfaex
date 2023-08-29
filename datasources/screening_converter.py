@@ -1,8 +1,9 @@
 import pandas as pd
 
+import pathlib
 import sys
 
-input_path = sys.argv[1]
+input_path = pathlib.Path(sys.argv[1])
 
 def make_dataframe(input_path):
     df = pd.read_csv(input_path)
@@ -23,9 +24,9 @@ def convert_date_to_iso(df):
 
 def construct_datetimes(df):
     df['datetime_one'] = df["iso_date"].map(str)+" "+df["time_one"].map(str)
-    df['datetime_one'] = pd.to_datetime(df['datetime_one'], format='mixed').dt.strftime('%Y-%m-%dT%H:%M')
+    df['datetime_one'] = pd.to_datetime(df['datetime_one'], format='mixed',errors='coerce').dt.strftime('%Y-%m-%dT%H:%M')
     df['datetime_two'] = df["iso_date"].map(str)+" "+df["time_two"].map(str)
-    df['datetime_two'] = pd.to_datetime(df['datetime_two'], format='mixed').dt.strftime('%Y-%m-%dT%H:%M')
+    df['datetime_two'] = pd.to_datetime(df['datetime_two'], format='mixed',errors='coerce').dt.strftime('%Y-%m-%dT%H:%M')
 
     # replace any datetimes without times to empty string (we already know the date elsewhere)
     df['datetime_one'] = df['datetime_one'].replace(to_replace=r'^.+T00:00$', value='', regex=True)
@@ -38,7 +39,7 @@ def main():
     df = convert_showtimes(df)
     df = convert_date_to_iso(df)
     df = construct_datetimes(df)
-    outpath = "screenings_cleaned.csv"
+    outpath = input_path.stem + "_cleaned.csv"
     df.to_csv(outpath)
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_23_230338) do
+ActiveRecord::Schema.define(version: 2023_08_29_220435) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "date"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(version: 2023_08_23_230338) do
     t.string "print_source"
     t.datetime "datetime_one"
     t.datetime "datetime_two"
+    t.string "short_description"
+    t.string "import_row_id"
+    t.string "film_runtime"
+    t.string "permission"
   end
 
   create_table "people", force: :cascade do |t|
@@ -35,6 +39,8 @@ ActiveRecord::Schema.define(version: 2023_08_23_230338) do
     t.string "death_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "import_row_id"
+    t.string "wikidata_id"
   end
 
   create_table "relations", force: :cascade do |t|
@@ -68,10 +74,13 @@ ActiveRecord::Schema.define(version: 2023_08_23_230338) do
     t.string "outside_organizer"
     t.string "location"
     t.string "artist_list"
+    t.string "additional_programs"
+    t.string "date_note"
+    t.string "import_row_id"
   end
 
   create_table "works", force: :cascade do |t|
-    t.datetime "year"
+    t.string "year"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,6 +88,9 @@ ActiveRecord::Schema.define(version: 2023_08_23_230338) do
     t.string "AddCountryToWorks"
     t.string "country"
     t.string "alt_title"
+    t.string "import_row_id"
+    t.string "wikidata_id"
+    t.text "legacy_credits"
   end
 
 end
