@@ -19,13 +19,10 @@
   <tbody>
     <% @series.each do |series| %>
       <tr>
-        <td><%= series.series_start_date %></td>
-        <td><%= series.series_end_date %></td>
+        <td><%= series.start_date_display %></td>
+        <td><%= series.end_date_display %></td>
         <td><%= series.series_type %></td>
         <td><%= series.series_title %></td>
-        <td><%= series.series_description %></td>
-        <td><%= series.series_credits %></td>
-        <td><%= series.series_short_description %></td>
         <td><%= link_to 'Show', series %></td>
         <td><%= link_to 'Edit', edit_series_path(series) %></td>
         <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>

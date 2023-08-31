@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Title:</strong>
+  <%= @work.title %>
+</p>
+
+<p>
   <strong>Year:</strong>
   <%= @work.year %>
 </p>
@@ -8,6 +13,11 @@
 <p>
   <strong>Description:</strong>
   <%= @work.description %>
+</p>
+
+<p>
+  <strong>Wikidata ID:</strong>
+  <%= @work.wikidata_id %>
 </p>
 
 <%= link_to 'Edit', edit_work_path(@work) %> |

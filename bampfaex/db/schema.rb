@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_29_220435) do
+ActiveRecord::Schema.define(version: 2023_08_30_205038) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "date"
@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 2023_08_29_220435) do
     t.datetime "updated_at", null: false
     t.string "import_row_id"
     t.string "wikidata_id"
+    t.string "name_note"
+    t.index ["fname", "lname", "name_note"], name: "index_people_on_fname_and_lname_and_name_note", unique: true
+    t.index ["fname", "lname", "wikidata_id"], name: "index_people_on_fname_and_lname_and_wikidata_id", unique: true
   end
 
   create_table "relations", force: :cascade do |t|

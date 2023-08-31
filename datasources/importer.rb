@@ -4,23 +4,18 @@ ENV['RAILS_ENV'] = "development"
 require '../bampfaex/config/environment.rb'
 require 'csv'
 
-# events = []
-# event_csv_path = 'film_screenings_cleaned.csv'
-# headers = CSV.foreach(event_csv_path).first
-# CSV.foreach(event_csv_path, headers: true) do |row|
-#   events << row.to_h
-# end
-# # puts  events
-# # require Event
-# # puts Event.columns.map(&:name)
-# Event.import(events)
-
 def import_csv(path:,model:)
   items = []
   CSV.foreach(path, headers: true) do |row|
-    items << row.to_h
+    item = row.to_h.compact
+    puts item
+    unless item.empty?
+      model.create(item)
+    end
+    # items << row.to_h
+    # items = items.compact
   end
-  model.import(items)
+  # model.import(items.compact, on_duplicate_key_ignore: true)
 end
 
 path = ARGV[0]

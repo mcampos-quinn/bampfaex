@@ -7,4 +7,7 @@ class Work < ApplicationRecord
   belongs_to :series, optional: true
   belongs_to :event, optional: true
 
+  validates_uniqueness_of :title, scope: [:wikidata_id]
+
+
 end

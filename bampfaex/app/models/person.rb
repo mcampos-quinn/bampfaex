@@ -6,4 +6,6 @@ class Person < ApplicationRecord
   belongs_to :work, optional: true
   belongs_to :series, optional: true
 
+  validates_uniqueness_of :display_name, scope: [:name_note]
+
 end

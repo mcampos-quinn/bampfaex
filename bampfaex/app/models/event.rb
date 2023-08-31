@@ -11,7 +11,23 @@ class Event < ApplicationRecord
 
   def display_date
     begin
-      @display_date = Date.strptime(self.date,"%F")
+      @display_date = self.date&.strftime('%B %d, %Y')
+    ensure
+      @display_date= ""
+    end
+  end
+
+  def showtime_one_display
+    begin
+      @showtime_one_display = self.datetime_one&.strftime('%l:%M %p')
+    ensure
+      @showtime_one_display= ""
+    end
+  end
+
+  def showtime_two_display
+    begin
+      @display_date = self.datetime_two&.strftime('%l:%M %p')
     ensure
       @display_date= ""
     end

@@ -2,12 +2,17 @@
 
 <p>
   <strong>Date:</strong>
-  <%= @event.date %>
+  <%= @event.display_date %>
 </p>
 
 <p>
-  <strong>Showtimes:</strong>
-  <%= @event.showtimes %>
+  <strong>Showtime One:</strong>
+  <%= @event.showtime_one_display %>
+</p>
+
+<p>
+  <strong>Showtime Two:</strong>
+  <%= @event.showtime_two_display %>
 </p>
 
 <p>
@@ -21,6 +26,11 @@
 </p>
 
 <p>
+  <strong>Short Description:</strong>
+  <%= @event.short_description %>
+</p>
+
+<p>
   <strong>Legacy credit text:</strong>
   <%= @event.legacy_credit_text %>
 </p>
@@ -28,6 +38,21 @@
 <p>
   <strong>Location:</strong>
   <%= @event.location %>
+</p>
+
+<p>
+  <strong>Permission:</strong>
+  <%= @event.permission %>
+</p>
+
+<p>
+  <strong>Print Source:</strong>
+  <%= @event.print_source %>
+</p>
+
+<p>
+  <strong>Film Runtime:</strong>
+  <%= @event.film_runtime %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
