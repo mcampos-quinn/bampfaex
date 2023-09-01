@@ -26,6 +26,21 @@
 </p>
 
 <p>
+  <strong>Location:</strong>
+  <%= @series.location %>
+</p>
+
+<p>
+  <strong>Exhibition curators:</strong>
+  <%= list_series_people(series_id: @series.id, role: 'curator') %>
+</p>
+
+<p>
+  <strong>Artists:</strong>
+  <%= list_series_people(series_id: @series.id, role: 'artist') %>
+</p>
+
+<p>
   <strong>Series credits:</strong>
   <%= @series.series_credits %>
 </p>

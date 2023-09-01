@@ -1,0 +1,81 @@
+import_row_id,exhibition_number,series_title,location,series_description,series_short_description,series_credits,additional_programs,catalog_notes,brochure_notes,tour_notes,date_note,series_start_date,series_end_date,series_type
+ser_00001,1,Toward A University Arts Center,Powerhouse Gallery,,,,,Catalog,,,,1966-01-06,1966-02-16,art_exhibition
+ser_00002,2,Directions in Kinetic Sculpture,Powerhouse Gallery,,,,,Catalog,,Tour: Santa Barbara Museum of Art,,1966-03-17,1966-04-30,art_exhibition
+ser_00003,3,Selection 1966: The University Art Collections,Powerhouse Gallery,,,,,Catalog,,,,1966-05-23,1966-09-06,art_exhibition
+ser_00004,4,Magritte,Powerhouse Gallery,,,,,,,,,1966-10-03,1966-10-30,art_exhibition
+ser_00005,5,Pascin,Powerhouse Gallery,,,,,Catalog,,,,1966-11-14,1966-12-18,art_exhibition
+ser_00006,6,Medieval Manuscripts From the William S. Glazier Collection,Powerhouse Gallery,,,,,,,,,1967-01-09,1967-02-05,art_exhibition
+ser_00007,7,Modern Paintings from the Hazen Collection,Powerhouse Gallery,,,,,,,,,1967-02-20,1967-03-26,art_exhibition
+ser_00008,8,Funk,Powerhouse Gallery,,,,,Catalog,,,,1967-04-18,1967-05-29,art_exhibition
+ser_00009,9,Selection 1967: Recent Accessions in Modern Art,Powerhouse Gallery,,,,,Catalog,,,,1967-06-20,1967-09-10,art_exhibition
+ser_00010,10,Once Invisible,Powerhouse Gallery,,,,,,,,,1967-10-06,1967-11-05,art_exhibition
+ser_00011,11,R. B. Kitaj,Worth Ryder Gallery,,,,,Catalog,,,,1967-10-06,1967-11-12,art_exhibition
+ser_00012,12,Faculty Show: University of California (Berkeley) Art Department,Powerhouse Gallery,,,,,Catalog,,,,1967-11-20,1967-12-31,art_exhibition
+ser_00013,13,Nolde: The 'Unpainted' Pictures,Worth Ryder Gallery,,,,,,,,,1967-11-27,1967-12-21,art_exhibition
+ser_00014,14,Sam Francis,Powerhouse Gallery,,,,,,,,,1968-01-15,1968-02-18,art_exhibition
+ser_00015,15,New British Painting and Sculpture,Powerhouse Gallery,,,,,,,,,1968-03-04,1968-04-07,art_exhibition
+ser_00016,16,Eduardo Paolozzi: A Print Retrospective,Worth Ryder Gallery,,,,,Catalog,,,,1968-04-01,1968-04-21,art_exhibition
+ser_00017,17,Master Drawings from California Collections,Powerhouse Gallery,,,,,Catalog,,,,1968-04-29,1968-07-14,art_exhibition
+ser_00018,18,Rico Lebrun,Powerhouse Gallery,,,,,,,,,1968-06-17,1968-07-14,art_exhibition
+ser_00019,87,Roman Art in West Coast Collections,Gallery 2,,,,,,,,,1973-03-28,1973-05-13,art_exhibition
+ser_00020,88,Architectural Drawings,Gallery D,,,,,,,,,1973-04-25,1973-05-27,art_exhibition
+ser_00021,89,M. F. A. Candidates from Berkeley (first half),Gallery 1,,,,,,,,,1973-05-30,1973-06-17,art_exhibition
+ser_00022,90,M. F. A. Candidates from Berkeley (second half),Gallery 2,,,,,,,,,1973-06-06,1973-06-24,art_exhibition
+ser_00023,91,Japanese Woodblock Prints from the Museum Collection,Gallery D,,,,,,,,,1973-06-13,1973-07-29,art_exhibition
+ser_00024,92,Market Street Program,Gallery 2,,,,,,,,,1973-07-11,1973-09-02,art_exhibition
+ser_00025,93,Joseph Raffael: Water Paintings,Gallery 1,,,,,Catalog,,,,1973-07-18,1973-09-16,art_exhibition
+ser_00026,94,French Prints and Drawings from the Museum Collection,Theater Gallery,,,,,,,,,1973-08-10,1973-09-30,art_exhibition
+ser_00027,95,Terry Fox ,"Gallery C, D",,,,,Catalog,,,,1973-09-05,1973-10-21,art_exhibition
+ser_00028,96,Stephen Laub: Bodies of Water,Lobby,,,,,,,,,1973-09-12,1973-10-14,art_exhibition
+ser_00029,97,Art by 35 Women from the Museum Collection,Gallery 2,,,,,,,,,1973-09-19,1973-11-11,art_exhibition
+ser_00030,98,Japanese Paintings from the Collection of George J. Schlenker,Gallery 3,,,,,Catalog,,,,1973-09-26,1973-12-09,art_exhibition
+ser_00031,99,Don Potts: My First Car,Gallery B,,,,,,,,,1973-09-26,1973-10-28,art_exhibition
+ser_00032,100,Arnold Newman,Theater Gallery,,,,,,,,,1973-10-03,1973-11-04,art_exhibition
+ser_00033,101,German and Austrian Prints and Drawings from the Museum Collection,Gallery 1,,,,,,,,,1973-10-03,1973-11-18,art_exhibition
+ser_00034,102,Kinetic Sculpture from the Collection,"Gallery C, D",,,,,,,,,1973-11-14,1974-01-06,art_exhibition
+ser_00035,103,Photographs by Cecil Beaton,Theater Gallery,,,,,,,,,1973-11-21,1973-12-23,art_exhibition
+ser_00036,104,Larry Fox: Photographs,Theater Gallery,,,,,,,,,1973-11-28,1973-12-30,art_exhibition
+ser_00037,360,The Photographs of Raghubir Singh,Theater Gallery,,,,,,,,(extended until September 29),1985-05-08,1985-07-28,art_exhibition
+ser_00038,361,MFA/UCB/1985,"Galleries 3, 4",,,,,,,,,1985-07-13,1985-08-08,art_exhibition
+ser_00039,362,When the World Changed: Japanese Prints from the 19th and 20th Centuries,Gallery 2,,,,,,Brochure,,,1985-07-17,1985-09-01,art_exhibition
+ser_00040,363,William Morris: The Sanford & Helen Berger Collection,Gallery 4,,,,,,,,,1984-10-10,1984-12-16,art_exhibition
+ser_00041,364,Heinz Isler: Thin Concrete Shells-A Structural Art Form,Theater Gallery,,,,,Catalog,,,,1984-10-13,1984-12-09,art_exhibition
+ser_00042,365,Doug Hall / MATRIX 77,Gallery 1,,,,,,Brochure,,,1984-10-15,1984-11-15,art_exhibition
+ser_00043,366,Jake Berthot / MATRIX 78,Gallery 1,,,,,,Brochure,,,1984-11-22,1985-01-22,art_exhibition
+ser_00044,367,Rupert Garcia / MATRIX 79,Gallery 1,,,,,,Brochure,,,1984-11-22,1985-01-15,art_exhibition
+ser_00045,684,The Bacardi Gift,Theater Gallery,,,,,,,,,2001-04-04,2001-04-18,art_exhibition
+ser_00046,685,Ricky Swallow: For those who came in late / MATRIX 191,Gallery 1,,,,,,Brochure,,,2001-04-21,2001-05-27,art_exhibition
+ser_00047,686,The Edifice Itself,Theater Gallery,,,,,,,,,2001-04-24,2001-05-27,art_exhibition
+ser_00048,687,CED Thesis Show,Theater Gallery,,,,,,,,,2001-04-28,2001-04-30,art_exhibition
+ser_00049,688,Five Star: The 31st Annual University of California at Berkeley Master of Fine Arts Graduate Exhibition,Gallery 3,,,,,,Brochure,,,2001-05-11,2001-05-27,art_exhibition
+ser_00050,689,Hans Hofmann: Real/Life,Gallery A,,,,,,,,,2001-09-12,2002-05-16,art_exhibition
+ser_00051,690,The Lady at the Window: Figure Painting in the Qing Dynasty,"Galleries C, D",,,,,,,,,2001-09-12,2002-02-28,art_exhibition
+ser_00052,691,The Dream of the Audience: Theresa Hak Kyung Cha (1951-1982),"Galleries 2, 3",,,,,Catalog,,Tour,,2001-09-12,2001-12-16,art_exhibition
+ser_00053,692,Martin Puryear: Sculpture of the 1990s,Gallery B,,,,,Catalog,,,,2001-09-12,2001-12-30,art_exhibition
+ser_00054,693,"Ceal Floyer: 37'4"" / MATRIX 192",Gallery 1,,,,,,Brochure,,,2001-09-16,2001-11-11,art_exhibition
+ser_00055,694,"Jessica Bronson: heaps, layers, and curls / MATRIX 194",Gallery 4,,,,,,Brochure,,,2001-09-16,2001-11-11,art_exhibition
+ser_00056,695,Ten Shades of Green,Theater Gallery,,,,,,,,,2001-10-03,2001-12-02,art_exhibition
+ser_00057,696,Fast Forward,"Galleries 5, 6",,,,,,,,,2001-10-17,2002-02-24,art_exhibition
+ser_00058,697,Thomas Scheibitz: I-geometrica B / MATRIX 195,Gallery 1,,,,,,Brochure,,,2001-11-18,2002-01-13,art_exhibition
+ser_00059,698,Ansel Adams in the University of California Collections: A Photographer at Work,Theater Gallery,,,,,,,,,2001-12-12,2002-03-11,art_exhibition
+ser_00060,699,Migrations: Photographs by Sebastiao Salgado,"Galleries 2, 3, 4, School of Journalism at North Gate Hall",,,," Aperture Foundation for Photography and the Visual Arts, co-sponsored with Graduate School of Journalism and Townsend Center Avenali Lecture",Catalog,,,,2002-01-16,2002-03-24,art_exhibition
+ser_00061,700,Sowon Kwon: average female (Perfect) / MATRIX 196,Gallery 1,,,,,,Brochure,,,2002-01-27,2002-03-24,art_exhibition
+ser_00062,701,Masterworks of Chinese Painting: In Pursuit of Mists and Clouds,"Galleries 6, C, D",,,,,,,,,2002-03-13,2002-05-26,art_exhibition
+ser_00063,702,Marion Brenner: The Subtle Life of Plants and People,Theater Gallery,,,,,,,,,2002-03-21,2002-05-06,art_exhibition
+ser_00064,703,Sanford Biggers: Psychic Windows / MATRIX 197,Gallery 1,,,,,,Brochure,,,2002-04-07,2002-06-02,art_exhibition
+ser_00065,704,Komar and Melamid: Asian Elephant Art and Conservation Project,Gallery 3,,,,,Catalog,,,,2002-04-10,2002-07-14,art_exhibition
+ser_00066,706,New Knowledge: The 32nd Annual UC Berkeley Master of Fine Arts Graduate Exhibition,Gallery 2,,,,,,Brochure,,,2002-05-18,2002-07-28,art_exhibition
+ser_00067,707,Friends and Rivals: Nakabayashi Chikuto and Yamamoto Baiitsu,"Galleries C, D",,,,,,,,,2002-06-12,2002-12-01,art_exhibition
+ser_00068,708,V.I.P. [prints and drawings from the collection],Theater Gallery,,,,,,,,,2002-06-05,2002-08-18,art_exhibition
+ser_00069,709,T. J. Wilcox: Smorgasbord / MATRIX 198,Gallery 1,,,,,,Brochure,,,2002-06-16,2002-07-28,art_exhibition
+ser_00070,908,Zarouhie Abdalian / MATRIX 249,Gallery A,,,,L@TE,,Brochure,,,2013-08-02,2013-09-29,art_exhibition
+ser_00071,909,"Yang Fudong: Estranged Paradise, Works 1993–2013","Gallery 1, 2, 3, Theater Gallery, Museum Theater",,,,PFA,Catalog,,,,2013-08-21,2013-12-08,art_exhibition
+ser_00072,910,Beauty Revealed: Images of Women in Qing Dynasty Chinese Painting,"Galleries 4, 5",,,,,Catalog,,,,2013-09-25,2013-12-22,art_exhibition
+ser_00073,911,Linda Stark / MATRIX 250,Gallery A,,,,,,Brochure,,,2013-10-18,2013-12-22,art_exhibition
+ser_00074,912,Multiple Encounters: Classical Chinese Paintings with Yang Fudong,Gallery C,,,,,,,,,2013-11-06,2014-02-02,art_exhibition
+ser_00075,913,The Possible,"Galleries B, 2, 3, 4",,,,,,Brochure,,,2014-01-29,2014-05-30,art_exhibition
+ser_00076,914,Paz Errazuriz / MATRIX 251,"Gallery 1, Theater Gallery",,,,,,Brochure,,,2014-01-17,2014-03-30,art_exhibition
+ser_00077,915,Barbara Chase-Riboud,Gallery 5,,,,,Catalog,,,,2014-02-12,2014-04-27,art_exhibition
+ser_00078,916,Anna Maria Maiolino / MATRIX 252,Gallery 1,,,,,,Brochure,,,2014-01-17,2014-03-30,art_exhibition
+ser_00079,917,Will Rogan / MATRIX 253,Gallery 1,,,,,,Brochure,,,2014-04-11,2014-06-29,art_exhibition
+ser_00080,918,Forrest Bess: Seeing Things Visible,Gallery 2,,,,,Catalog,Brochure,,,2014-06-11,2014-09-14,art_exhibition

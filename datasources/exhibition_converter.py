@@ -14,11 +14,11 @@ def main():
     df = make_dataframe(input_path)
     try:
         df['isoDates'] = df['exhibitionDates'].map(daterangeparser.parse, na_action='ignore')
-        df['Start Date'] = df['isoDates'].values[0][0]
-        df['End Date'] = df['isoDates'].values[0][1]
+        df['series_start_date'] = df['isoDates'].map(lambda x: x[0])
+        df['series_end_date Date'] = df['isoDates'].map(lambda x: x[1])
     except:
-        df['Start Date'] = pd.to_datetime(df['Date Start']).dt.strftime('%Y-%m-%d')
-        df['End Date'] = pd.to_datetime(df['Date End'], format='mixed').dt.strftime('%Y-%m-%d')
+        df['series_start_date'] = pd.to_datetime(df['Date Start']).dt.strftime('%Y-%m-%d')
+        df['series_end_date'] = pd.to_datetime(df['Date End'], format='mixed').dt.strftime('%Y-%m-%d')
     outpath = input_path.stem + "_cleaned.csv"
     df.to_csv(outpath)
 

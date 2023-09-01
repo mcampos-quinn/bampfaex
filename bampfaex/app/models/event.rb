@@ -9,6 +9,8 @@ class Event < ApplicationRecord
 
   belongs_to :series, optional: true
 
+  validates_uniqueness_of :date, scope: [:datetime_one, :screening_title]
+
   def display_date
     begin
       @display_date = self.date&.strftime('%B %d, %Y')

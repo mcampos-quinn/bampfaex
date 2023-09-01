@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_30_205038) do
+ActiveRecord::Schema.define(version: 2023_09_01_224105) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "date"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2023_08_30_205038) do
     t.string "import_row_id"
     t.string "film_runtime"
     t.string "permission"
+    t.index ["date", "datetime_one", "screening_title"], name: "index_events_on_date_and_datetime_one_and_screening_title", unique: true
   end
 
   create_table "people", force: :cascade do |t|
@@ -54,9 +55,14 @@ ActiveRecord::Schema.define(version: 2023_08_30_205038) do
     t.integer "event_id"
     t.integer "series_id"
     t.integer "work_id"
+    t.index ["event_id", "person_id"], name: "index_relations_on_event_id_and_person_id", unique: true
+    t.index ["event_id", "work_id"], name: "index_relations_on_event_id_and_work_id", unique: true
     t.index ["event_id"], name: "index_relations_on_event_id"
     t.index ["person_id"], name: "index_relations_on_person_id"
+    t.index ["series_id", "event_id"], name: "index_relations_on_series_id_and_event_id", unique: true
+    t.index ["series_id", "person_id"], name: "index_relations_on_series_id_and_person_id", unique: true
     t.index ["series_id"], name: "index_relations_on_series_id"
+    t.index ["work_id", "person_id"], name: "index_relations_on_work_id_and_person_id", unique: true
     t.index ["work_id"], name: "index_relations_on_work_id"
   end
 
