@@ -8,7 +8,7 @@ module SeriesHelper
         person = Person.find(p.person_id)
         people << person.display_name
       rescue ActiveRecord::RecordNotFound
-        
+        puts "#{people}not found"
       end
     end
     people

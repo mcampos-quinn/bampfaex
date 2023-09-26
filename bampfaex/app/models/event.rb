@@ -11,6 +11,11 @@ class Event < ApplicationRecord
 
   validates_uniqueness_of :date, scope: [:datetime_one, :screening_title]
 
+
+  def make_unique_combo
+    @unique_combo = "#{self.date}#{self.datetime_one}#{self.screening_title}"
+  end
+
   def display_date
     begin
       @display_date = self.date&.strftime('%B %d, %Y')

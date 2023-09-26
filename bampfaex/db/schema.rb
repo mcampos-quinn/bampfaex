@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_01_224105) do
+ActiveRecord::Schema.define(version: 2023_09_26_180748) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "date"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2023_09_01_224105) do
     t.string "import_row_id"
     t.string "film_runtime"
     t.string "permission"
+    t.string "unique_combo"
     t.index ["date", "datetime_one", "screening_title"], name: "index_events_on_date_and_datetime_one_and_screening_title", unique: true
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2023_09_01_224105) do
     t.string "import_row_id"
     t.string "wikidata_id"
     t.string "name_note"
+    t.string "unique_combo"
     t.index ["fname", "lname", "name_note"], name: "index_people_on_fname_and_lname_and_name_note", unique: true
     t.index ["fname", "lname", "wikidata_id"], name: "index_people_on_fname_and_lname_and_wikidata_id", unique: true
   end
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 2023_09_01_224105) do
     t.string "additional_programs"
     t.string "date_note"
     t.string "import_row_id"
+    t.string "unique_combo"
   end
 
   create_table "works", force: :cascade do |t|
@@ -94,12 +97,12 @@ ActiveRecord::Schema.define(version: 2023_09_01_224105) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.string "AddCountryToWorks"
     t.string "country"
     t.string "alt_title"
     t.string "import_row_id"
     t.string "wikidata_id"
     t.text "legacy_credits"
+    t.string "unique_combo"
   end
 
 end

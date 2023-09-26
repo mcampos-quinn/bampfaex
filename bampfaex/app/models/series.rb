@@ -19,4 +19,8 @@ class Series < ApplicationRecord
     end
   end
 
+  def make_unique_combo
+    @unique_combo = "#{self.series_start_date}#{self.series_end_date}#{self.series_title}"
+  end
+
 end

@@ -8,4 +8,8 @@ class Person < ApplicationRecord
 
   validates_uniqueness_of :display_name, scope: [:name_note]
 
+  def make_unique_combo
+    @unique_combo = "#{self.display_name}#{self.name_note}"
+  end
+
 end
