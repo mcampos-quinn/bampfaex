@@ -13,7 +13,7 @@ class Event < ApplicationRecord
 
 
   def make_unique_combo
-    @unique_combo = "#{self.date}#{self.datetime_one}#{self.screening_title}"
+    @unique_combo = "#{self.date}#{self.datetime_one}#{self.screening_title}#{self.description}"
   end
 
   def display_date

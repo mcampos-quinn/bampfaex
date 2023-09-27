@@ -19,18 +19,18 @@ def link_csv(path:, model_source: ,model_dest:, relationship:)
   CSV.foreach(path, headers: true) do |row|
     item = row.to_h.compact
     source_import_row_id = item['import_row_id']
-    puts item
+    # puts item
 
     unless item.empty?
       source_id_label = model_source.name.downcase + "_id"
-      source_id = model_source.where(import_row_id:source_import_row_id).ids[0]
+      source_id = model_source.where(item.except!('import_row_id')).ids[0]
       puts source_id_label
       puts source_id
 
       destination_id_label = model_dest.name.downcase + "_id"
       # item.except! returns the csv row hash without the import_row_id
       # and it's just fed as a hash to the db query. neat!
-      destination_id = model_dest.where(item.except!('import_row_id')).ids[0]
+      destination_id = model_dest.where("import_row_id LIKE '%#{source_import_row_id}%'").ids[0]
       puts destination_id_label
       puts destination_id
 

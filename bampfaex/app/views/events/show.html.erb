@@ -6,6 +6,16 @@
 </p>
 
 <p>
+  <strong>Films:</strong>
+  <%= list_event_works(event_id: @event.id, role: 'film screened') %>
+</p>
+
+<p>
+  <strong>Import row id:</strong>
+  <%= @event.import_row_id %>
+</p>
+
+<p>
   <strong>Showtime One:</strong>
   <%= @event.showtime_one_display %>
 </p>
