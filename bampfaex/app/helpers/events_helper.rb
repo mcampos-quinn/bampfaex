@@ -6,8 +6,7 @@ module EventsHelper
     work_relations.each do |w|
       puts w.work_id
       work = Work.find(w.work_id)
-      title = work.title
-      works << title
+      works << work
     end
     return works
   end

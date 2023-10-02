@@ -7,7 +7,8 @@
 
 <p>
   <strong>Films:</strong>
-  <%= list_event_works(event_id: @event.id, role: 'film screened') %>
+
+  <%= safe_join(list_event_works(event_id: @event.id, role: 'film screened').map { |w| link_to(w.title, "/works/#{w.id}") }, ", ".html_safe) %>
 </p>
 
 <p>
