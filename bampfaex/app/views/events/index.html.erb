@@ -2,6 +2,17 @@
 
 <h1>Events</h1>
 
+<div>
+  <%= month_calendar(events: @calendar_events,attribute: :datetime_one) do |date,events| %>
+    <%= date %>
+    <% events.each do |event| %>
+    <div>
+      <%= event.display_date %>
+    </div>
+  <% end %>
+  <% end %>
+</div>
+
 <table>
   <thead>
     <tr>

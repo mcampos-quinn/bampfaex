@@ -43,7 +43,7 @@ def link_csv(path:, model_source: ,model_dest:, relationship:)
           p = Relation.create!(values)
           puts p.valid?
         rescue
-          puts "invalud relation between #{source_id_label}:#{source_id} and #{destination_id_label}:#{destination_id}"
+          puts "invalid relation between #{source_id_label}:#{source_id} and #{destination_id_label}:#{destination_id}"
         end
       end
     end

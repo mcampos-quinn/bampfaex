@@ -24,6 +24,16 @@ class Event < ApplicationRecord
     end
   end
 
+  ### these are for the calendar gem
+  # def start_time_one
+  #   self.datetime_one
+  # end
+  #
+  # def start_time_two
+  #   self.datetime_two
+  # end
+
+
   def showtime_one_display
     begin
       @showtime_one_display = self.datetime_one&.strftime('%l:%M %p')
