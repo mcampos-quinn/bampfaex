@@ -32,12 +32,12 @@
 
 <p>
   <strong>Exhibition curators:</strong>
-  <%= list_series_people(series_id: @series.id, role: 'curator') %>
+  <%= safe_join(list_series_people(series_id: @series.id, role: 'curator').map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
 </p>
 
 <p>
   <strong>Artists:</strong>
-  <%= list_series_people(series_id: @series.id, role: 'artist') %>
+  <%= safe_join(list_series_people(series_id: @series.id, role: 'artist').map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
 </p>
 
 <p>

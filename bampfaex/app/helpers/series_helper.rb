@@ -6,11 +6,11 @@ module SeriesHelper
     people_relations.each do |p|
       begin
         person = Person.find(p.person_id)
-        people << person.display_name
+        people << person
       rescue ActiveRecord::RecordNotFound
         puts "#{people}not found"
       end
     end
-    people
+    return people
   end
 end

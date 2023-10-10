@@ -6,19 +6,42 @@
 </p>
 
 <p>
+  <strong>Alternative Title:</strong>
+  <%= @work.alt_title %>
+</p>
+
+<p>
+  <strong>Director:</strong>
+  <%= safe_join(list_work_people(work_id: @work.id, role: 'director').map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
+</p>
+
+<p>
   <strong>Year:</strong>
   <%= @work.year %>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @work.description %>
-</p>
+<div>
+  <p><strong>Description:</strong></p>
+  <p >
+    <%= @work.description %>
+  </p>
+</div>
 
 <p>
   <strong>Import row id:</strong>
   <%= @work.import_row_id %>
 </p>
+
+<p>
+  <strong>Screenings:</strong>
+  <%= safe_join(list_work_events(work_id: @work.id, role: 'film screened').map { |e| link_to(e.display_date, "/events/#{e.id}") }, ", ".html_safe) %>
+</p>
+
+<p>
+  <strong>Cinefiles documents</strong>
+  <a href='<%= "https://cinefiles.bampfa.berkeley.edu/?search_field=title_txt&q=#{@work.title}" %>'>Search</a>
+</p>
+
 
 <p>
   <strong>Wikidata ID:</strong>

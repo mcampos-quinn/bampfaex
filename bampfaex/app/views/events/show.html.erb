@@ -33,17 +33,17 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @event.description %>
+  <%= @event.description&.html_safe %>
 </p>
 
 <p>
   <strong>Short Description:</strong>
-  <%= @event.short_description %>
+  <%= @event.short_description&.html_safe %>
 </p>
 
 <p>
   <strong>Legacy credit text:</strong>
-  <%= @event.legacy_credit_text %>
+  <%= @event.legacy_credit_text&.html_safe %>
 </p>
 
 <p>

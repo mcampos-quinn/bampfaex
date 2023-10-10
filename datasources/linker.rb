@@ -26,20 +26,25 @@ def link_csv(path:, model_source: ,model_dest:, relationship:)
       source_id = model_source.where(item.except!('import_row_id')).ids[0]
       puts source_id_label
       puts source_id
+      # source = model_source.find(source_id)
+      # puts source.display_name
 
       destination_id_label = model_dest.name.downcase + "_id"
       # item.except! returns the csv row hash without the import_row_id
       # and it's just fed as a hash to the db query. neat!
       destination_id = model_dest.where("import_row_id LIKE '%#{source_import_row_id}%'").ids[0]
-      puts destination_id_label
-      puts destination_id
+      # puts destination_id_label
+      # puts destination_id
 
-      unless source_id.nil? or destination_id.nil?
+      unless source_id.blank? or destination_id.blank?
         values = { :relation_value => relationship, source_id_label => source_id, destination_id_label => destination_id}
         puts values
-        p = Relation.create(values)
-        # p.save
-        puts p.valid?
+        begin
+          p = Relation.create!(values)
+          puts p.valid?
+        rescue
+          puts "invalud relation between #{source_id_label}:#{source_id} and #{destination_id_label}:#{destination_id}"
+        end
       end
     end
   end
@@ -50,4 +55,6 @@ model_source = ARGV[1].constantize
 model_dest = ARGV[2].constantize
 relationship = ARGV[3]
 
-link_csv(path: path, model_source: model_source,model_dest: model_dest, relationship: relationship)
+if [path,model_source,model_dest,relationship].all?
+  link_csv(path: path, model_source: model_source,model_dest: model_dest, relationship: relationship)
+end
