@@ -27,4 +27,29 @@ module WorksHelper
     end
     return events
   end
+
+  def render_thumb_link(blob_csid, doc_id)
+    doc_url = "https://cinefiles.bampfa.berkeley.edu/catalog/#{doc_id}"
+    thumb_url= "https://webapps.cspace.berkeley.edu/cinefiles/imageserver/blobs/#{blob_csid}/derivatives/Medium/content"
+    tag = "<a href='#{doc_url}'><img class='' src='#{thumb_url}'></a>"
+  end
+
+  def list_cinefiles_thumbs(film_title: film_title)
+    require 'net/http'
+    url = URI.parse("https://webapps.cspace.berkeley.edu/solr/cinefiles-public/select?q=title_ss:%22#{film_title}%22")
+    puts url
+    req = Net::HTTP::Get.new(url.to_s)
+    res = Net::HTTP.start(url.host, url.port,use_ssl: true) {|http| http.request(req) }
+    hash_response = JSON.parse(res.body)
+    docs = hash_response['response']['docs']
+    puts docs
+    thumbs = []
+    docs.each do |doc|
+      doc_id = doc['id']
+      blob_csid = doc['blob_ss'][0]
+      thumb_link = render_thumb_link(blob_csid,doc_id)
+      thumbs << thumb_link
+    end
+    return thumbs
+  end
 end

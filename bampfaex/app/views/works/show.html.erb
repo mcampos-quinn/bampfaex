@@ -40,6 +40,9 @@
 <p>
   <strong>Cinefiles documents</strong>
   <a href='<%= "https://cinefiles.bampfa.berkeley.edu/?search_field=title_txt&q=#{@work.title}" %>'>Search</a>
+  <br>
+
+  <%= safe_join(list_cinefiles_thumbs(film_title: @work.title).map {|t| t.html_safe }, ", ").html_safe %>
 </p>
 
 

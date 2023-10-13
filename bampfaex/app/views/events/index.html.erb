@@ -4,12 +4,20 @@
 
 <div>
   <%= month_calendar(events: @calendar_events,attribute: :datetime_one) do |date,events| %>
+
     <%= date %>
     <% events.each do |event| %>
-    <div>
-      <%= event.display_date %>
-    </div>
-  <% end %>
+      <% event_works = list_event_works(event_id: event.id, role: 'film screened') %>
+      <br>
+      <% if not event_works.empty? %>
+        <%= event.showtime_one_display %>
+        <%= safe_join(event_works.map { |w| link_to(w.title, "/events/#{event.id}") }, ", ".html_safe) %>
+      <% elsif event.screening_title != nil %>
+        <%= event.screening_title %>
+      <% else %>
+        <%= event.display_date %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
 
