@@ -4,7 +4,7 @@ class WorksController < ApplicationController
   # GET /works or /works.json
   def index
     @works = Work.all
-    
+
   end
 
   # GET /works/1 or /works/1.json
@@ -66,6 +66,6 @@ class WorksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def work_params
-      params.require(:work).permit(:year, :description)
+      params.require(:work).permit(:year, :description, :title)
     end
 end

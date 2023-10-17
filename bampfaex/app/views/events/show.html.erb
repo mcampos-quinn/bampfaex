@@ -8,6 +8,17 @@
 </p>
 
 <p>
+  <strong>Recordings available:</strong>
+
+  <br>
+
+  <% ia_recordings = list_internet_archive_recordings(event_id: @event.id) %>
+  <% unless ia_recordings.nil? %>
+    <%= safe_join(ia_recordings.map {|t| t.html_safe }, ", ").html_safe %>
+  <% end %>
+</p>
+
+<p>
   <strong>Films:</strong>
 
   <%= safe_join(list_event_works(event_id: @event.id, role: 'film screened').map { |w| link_to(w.title, "/works/#{w.id}") }, ", ".html_safe) %>
