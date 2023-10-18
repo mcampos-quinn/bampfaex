@@ -21,6 +21,14 @@
 </p>
 
 <p>
+  <strong>Images:</strong>
+  <% preview_tags = get_resourcespace_image_previews(@series.id) %>
+  <% unless preview_tags.nil? %>
+    <%= safe_join(preview_tags.map {|p| p.html_safe }, ", ").html_safe %>
+  <% end %>
+</p>
+
+<p>
   <strong>Series description:</strong>
   <%= @series.series_description %>
 </p>
