@@ -31,7 +31,7 @@ module WorksHelper
   def render_thumb_link(blob_csid, doc_id)
     doc_url = "https://cinefiles.bampfa.berkeley.edu/catalog/#{doc_id}"
     thumb_url= "https://webapps.cspace.berkeley.edu/cinefiles/imageserver/blobs/#{blob_csid}/derivatives/Medium/content"
-    tag = "<a href='#{doc_url}'><img class='' src='#{thumb_url}'></a>"
+    tag = "<a href='#{doc_url}'><img class='' style='max-width: 200px' src='#{thumb_url}'></a>"
   end
 
   def list_cinefiles_thumbs(film_title: film_title)

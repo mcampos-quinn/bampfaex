@@ -1,83 +1,114 @@
 <p id="notice"><%= notice %></p>
-
-
-
 <p>
   <strong>Date:</strong>
   <%= @event.display_date %>
 </p>
 
-<p>
-  <strong>Recordings available:</strong>
+<% ia_recordings = list_internet_archive_recordings(event_id: @event.id) %>
+<% unless ia_recordings.to_a.empty? %>
+  <p>
+    <strong>Recordings available:</strong>
+    <br>
+      <%= safe_join(ia_recordings.map {|t| t.html_safe }, ", ").html_safe %>
+  </p>
+<% end %>
 
-  <br>
+<% preview_tags = get_resourcespace_event_image_previews(@event.id) %>
+<% unless preview_tags.to_a.empty? %>
+  <p>
+    <strong>Images:</strong>
+      <%= safe_join(preview_tags.map {|p| p.html_safe }, ", ").html_safe %>
+  </p>
+<% end %>
 
-  <% ia_recordings = list_internet_archive_recordings(event_id: @event.id) %>
-  <% unless ia_recordings.nil? %>
-    <%= safe_join(ia_recordings.map {|t| t.html_safe }, ", ").html_safe %>
-  <% end %>
-</p>
+<% films_screened = list_event_relations(event_id: @event.id, target_model: "Work", role: 'film screened') %>
+<% unless films_screened.to_a.empty? %>
+  <p>
+    <strong>Films:</strong>
+    <%= safe_join(films_screened.map { |w| link_to(w.title, "/works/#{w.id}") }, ", ".html_safe) %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Films:</strong>
-
-  <%= safe_join(list_event_works(event_id: @event.id, role: 'film screened').map { |w| link_to(w.title, "/works/#{w.id}") }, ", ".html_safe) %>
-</p>
-
+<% guests = list_event_relations(event_id: @event.id, target_model: "Person", role: 'in-person guest') %>
+<% unless guests.to_a.empty? %>
+  <p>
+    <strong>In-person guests:</strong>
+    <%= safe_join(guests.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
+  </p>
+<% end %>
+<!--
 <p>
   <strong>Import row id:</strong>
   <%= @event.import_row_id %>
 </p>
-
+-->
 <p>
   <strong>Showtime One:</strong>
   <%= @event.showtime_one_display %>
 </p>
 
-<p>
-  <strong>Showtime Two:</strong>
-  <%= @event.showtime_two_display %>
-</p>
+<% unless @event.showtime_two_display.nil? %>
+  <p>
+    <strong>Showtime Two:</strong>
+    <%= @event.showtime_two_display %>
+  </p>
+<% end %>
 
+<% unless @event.screening_title.nil? %>
 <p>
   <strong>Screening title:</strong>
   <%= @event.screening_title %>
 </p>
+<% end %>
 
+<% unless @event.description.nil? %>
 <p>
   <strong>Description:</strong>
   <%= @event.description&.html_safe %>
 </p>
+<% end %>
 
+<% unless @event.short_description.nil? %>
 <p>
   <strong>Short Description:</strong>
   <%= @event.short_description&.html_safe %>
 </p>
+<% end %>
 
+<% unless @event.legacy_credit_text.nil? %>
 <p>
   <strong>Legacy credit text:</strong>
   <%= @event.legacy_credit_text&.html_safe %>
 </p>
+<% end %>
 
+<% unless @event.location.nil? %>
 <p>
   <strong>Location:</strong>
   <%= @event.location %>
 </p>
+<% end %>
 
+<% unless @event.permission.nil? %>
 <p>
   <strong>Permission:</strong>
   <%= @event.permission %>
 </p>
+<% end %>
 
+<% unless @event.print_source.nil? %>
 <p>
   <strong>Print Source:</strong>
   <%= @event.print_source %>
 </p>
+<% end %>
 
+<% unless @event.film_runtime.nil? %>
 <p>
   <strong>Film Runtime:</strong>
   <%= @event.film_runtime %>
 </p>
+<% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

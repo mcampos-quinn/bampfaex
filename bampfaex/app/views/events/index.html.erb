@@ -7,13 +7,13 @@
 
     <%= date %>
     <% events.each do |event| %>
-      <% event_works = list_event_works(event_id: event.id, role: 'film screened') %>
+      <% event_works = list_event_relations(event_id: event.id, target_model: "Work", role: 'film screened') %>
       <br>
-      <% if not event_works.empty? %>
+      <% if not event_works.to_a.empty? %>
         <%= event.showtime_one_display %>
         <%= safe_join(event_works.map { |w| link_to(w.title, "/events/#{event.id}") }, ", ".html_safe) %>
       <% elsif event.screening_title != nil %>
-        <%= event.screening_title %>
+        <%= link_to(event.screening_title, "/events/#{event.id}")  %>
       <% else %>
         <%= event.display_date %>
       <% end %>

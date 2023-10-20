@@ -1,14 +1,20 @@
 module EventsHelper
-  def list_event_works(event_id: event_id,role: role)
+  def list_event_relations(event_id: nil, target_model: nil, role: nil)
     # query for related people and return an array of hashes
-    work_relations = Relation.select("work_id").where(event_id: event_id, relation_value: role).all
-    works = []
-    work_relations.each do |w|
-      puts w.work_id
-      work = Work.find(w.work_id)
-      works << work
+    _id = target_model.to_s+"_id"
+    target_id_label = _id.downcase
+    model_name = target_model.constantize
+    _relations = Relation.select(target_id_label).where(event_id: event_id, relation_value: role).all
+    unless _relations.to_a == []
+      relateds = []
+      _relations.each do |r|
+        target_id = r.as_json[target_id_label]
+        related = model_name.find(target_id)
+        relateds << related
+      end
+      puts relateds
     end
-    return works
+    return relateds
   end
 
   def list_internet_archive_recordings(event_id: event_id)
@@ -34,6 +40,22 @@ module EventsHelper
       end
       return embed_links
     end
+  end
+
+  def get_resourcespace_event_image_previews(event_id)
+    _event = Event.find(event_id)
+    event_title = _event.screening_title
+    if not event_title.nil?
+      # extend ResourcespaceHelper
+      request = ResourcespaceHelper::RSpaceRequest.new
+      response = request.search_get_previews(search_string="#{event_title}",resource_type=6)
+      # puts response
+    else
+      request = ResourcespaceHelper::RSpaceRequest.new
+      response = request.search_get_previews(search_string="fulleventdate:#{date}",resource_type=6)
+
+    end
+
   end
 
 

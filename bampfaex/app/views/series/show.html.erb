@@ -15,18 +15,26 @@
   <%= @series.series_type %>
 </p>
 
+<% events = list_series_relations(series_id: @series.id, target_model: "Event", role: 'related exhibition') %>
+<% unless events.to_a.empty? %>
+  <p>
+    <strong>Related Events:</strong>
+    <%= safe_join(events.map { |p| link_to(p.display_date, "/events/#{p.id}") }, ", ".html_safe) %>
+  </p>
+<% end %>
+
 <p>
   <strong>Series title:</strong>
   <%= @series.series_title %>
 </p>
 
+<% preview_tags = get_resourcespace_image_previews(@series.id) %>
+<% unless preview_tags.nil? %>
 <p>
   <strong>Images:</strong>
-  <% preview_tags = get_resourcespace_image_previews(@series.id) %>
-  <% unless preview_tags.nil? %>
     <%= safe_join(preview_tags.map {|p| p.html_safe }, ", ").html_safe %>
-  <% end %>
 </p>
+<% end %>
 
 <p>
   <strong>Series description:</strong>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_26_180748) do
+ActiveRecord::Schema.define(version: 2023_10_20_190253) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "date"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2023_09_26_180748) do
     t.string "film_runtime"
     t.string "permission"
     t.string "unique_combo"
+    t.string "film_format"
     t.index ["date", "datetime_one", "screening_title"], name: "index_events_on_date_and_datetime_one_and_screening_title", unique: true
   end
 
