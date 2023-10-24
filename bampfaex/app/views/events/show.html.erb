@@ -36,16 +36,34 @@
     <%= safe_join(guests.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
   </p>
 <% end %>
+
+<% presenters = list_event_relations(event_id: @event.id, target_model: "Person", role: 'presenter') %>
+<% unless presenters.to_a.empty? %>
+  <p>
+    <strong>Presented by:</strong>
+    <%= safe_join(presenters.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
+  </p>
+<% end %>
+
+<% performers = list_event_relations(event_id: @event.id, target_model: "Person", role: 'performer') %>
+<% unless performers.to_a.empty? %>
+  <p>
+    <strong>Performers:</strong>
+    <%= safe_join(performers.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
+  </p>
+<% end %>
 <!--
 <p>
   <strong>Import row id:</strong>
   <%= @event.import_row_id %>
 </p>
 -->
-<p>
-  <strong>Showtime One:</strong>
-  <%= @event.showtime_one_display %>
-</p>
+<% unless @event.showtime_one_display.nil? %>
+  <p>
+    <strong>Showtime One:</strong>
+    <%= @event.showtime_one_display %>
+  </p>
+<% end %>
 
 <% unless @event.showtime_two_display.nil? %>
   <p>
@@ -56,7 +74,7 @@
 
 <% unless @event.screening_title.nil? %>
 <p>
-  <strong>Screening title:</strong>
+  <strong>Event title:</strong>
   <%= @event.screening_title %>
 </p>
 <% end %>

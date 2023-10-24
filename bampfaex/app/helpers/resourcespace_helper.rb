@@ -57,7 +57,7 @@ module ResourcespaceHelper
         url = URI.parse(@query_url)
         req = Net::HTTP::Get.new(url.to_s)
         res = Net::HTTP.start(url.host, url.port,use_ssl: true) {|http| http.request(req) }
-        puts res
+        # puts res
         hash_response = JSON.parse(res.body)
         return hash_response
       end
