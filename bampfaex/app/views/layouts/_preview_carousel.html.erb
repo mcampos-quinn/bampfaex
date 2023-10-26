@@ -1,0 +1,39 @@
+<% preview_tags = @preview_tags %>
+
+<% unless preview_tags.to_a.empty? %>
+<div class="row">
+  <div class="col-sm-4">
+    <div id="previewCarousel" class="carousel slide col-sm" data-ride="carousel">
+      <div class="carousel-inner">
+        <% preview_tags.each.with_index  do |p, index| %>
+          <% if index.eql? 0 %>
+            <% @class = "carousel-item active"%>
+          <% else %>
+            <% @class = "carousel-item" %>
+          <% end %>
+          <div class="<%= @class %>">
+            <%= p['img'].html_safe %>
+            <% unless p['caption'].blank? %>
+              <%= p['caption'].html_safe %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#previewCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#previewCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <div class="col-sm">
+
+  </div>
+  <div class="col-sm">
+
+  </div>
+</div>
+<% end %>

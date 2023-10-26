@@ -36,7 +36,7 @@ module EventsHelper
       puts docs
       embed_links = []
       docs.each do |d|
-        embed_links << "<iframe src='https://archive.org/embed/#{d['identifier']}' width='500' height='60' frameborder='0' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen></iframe>"
+        embed_links << "<li class='list-group-item'><iframe src='https://archive.org/embed/#{d['identifier']}' width='500' height='60' frameborder='0' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen></iframe></li>"
       end
       return embed_links
     end
@@ -49,7 +49,8 @@ module EventsHelper
       # extend ResourcespaceHelper
       request = ResourcespaceHelper::RSpaceRequest.new
       response = request.search_get_previews(search_string="#{event_title}",resource_type=6)
-      # puts response
+      # puts response.body
+      return response
     else
       request = ResourcespaceHelper::RSpaceRequest.new
       response = request.search_get_previews(search_string="fulleventdate:#{date}",resource_type=6)

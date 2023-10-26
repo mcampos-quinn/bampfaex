@@ -14,3 +14,25 @@
  *= require_self
  *= require simple_calendar
  */
+
+.carousel-item > img {
+  /* display: flex;
+  align-content: center; */
+  margin: auto;
+}
+
+.carousel > a:hover {
+  background-color: transparent;
+}
+
+.carousel-control-next-icon .carousel-control-prev-icon {
+  background-color: black;
+}
+
+.event-title-box {
+  background-color: #ddd;
+}
+
+.card-body > h1 {
+  font-weight: bolder;
+}

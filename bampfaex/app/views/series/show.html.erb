@@ -28,12 +28,12 @@
   <%= @series.series_title %>
 </p>
 
-<% preview_tags = get_resourcespace_image_previews(@series.id) %>
-<% unless preview_tags.nil? %>
-<p>
-  <strong>Images:</strong>
-    <%= safe_join(preview_tags.map {|p| p.html_safe }, ", ").html_safe %>
-</p>
+<% @preview_tags = get_resourcespace_image_previews(@series.id) %>
+
+
+
+<% unless @preview_tags.nil? %>
+  <%= render partial: "/layouts/preview_carousel", locals: {preview_tags: @preview_tags} %>
 <% end %>
 
 <p>

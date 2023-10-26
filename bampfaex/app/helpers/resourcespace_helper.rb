@@ -17,7 +17,7 @@ module ResourcespaceHelper
       # puts @parameters.class
     end
 
-    def search_get_previews(search_string=nil,resource_type=nil,size="web")
+    def search_get_previews(search_string=nil,resource_type=nil,size="pre")
       require 'cgi'
       search_string = CGI.escape(search_string.gsub(/[[:punct:]]/, ' '))
       puts search_string
@@ -29,11 +29,11 @@ module ResourcespaceHelper
   			})
   		make_query()
   		hash_response = post_query()
-      # puts hash_response == []
+      # puts hash_response
       preview_tags = nil
       unless hash_response == []
         preview_tags = make_resourcespace_preview_tags(hash_response)
-        puts preview_tags
+        # puts preview_tags
         return preview_tags
       end
     end
@@ -57,24 +57,65 @@ module ResourcespaceHelper
         url = URI.parse(@query_url)
         req = Net::HTTP::Get.new(url.to_s)
         res = Net::HTTP.start(url.host, url.port,use_ssl: true) {|http| http.request(req) }
-        # puts res
-        hash_response = JSON.parse(res.body)
+        hash_response = ''
+        unless res.body.blank?
+          hash_response = JSON.parse(res.body)
+        end
         return hash_response
       end
     end
   end
 end
 
+def get_caption(ref)
+  requester = ResourcespaceHelper::RSpaceRequest.new(
+    rs_api_function: "get_resource_field_data",
+    parameters: format_parameters({
+      "resource":ref
+      })
+  )
+  requester.make_query()
+  hash_response = requester.post_query()
+  value = ""
+  unless hash_response.blank?
+    hash_response.each do |item|
+      if item['name'] == 'caption'
+        value = item['value']
+        break
+      end
+    end
+  end
+  return value
+end
+
 def make_resourcespace_preview_tags(hash_response)
   tags = []
   hash_response.each do |hit|
     # puts "hit"
-    # puts hit['url_web']
-
-    unless hit['url_web'].nil?
-      tag = "<img class='' style='max-width: 200px' src='#{hit['url_web']}'/>"
-      tags << tag
+    # puts hit['url_pre']
+    _hit = {}
+    _hit['caption'] = ''
+    caption =''
+    # caption = get_caption(hit['ref'])
+    if not caption.blank?
+      _hit['caption'] = "<p class='carousel-caption'>#{caption}</p>"
     end
+    if not hit['url_pre'].nil?
+      url = hit['url_pre']
+      _hit["img"] = "<img class='d-block h-100' src='#{url}' alt='#{caption}'/>"
+    else
+      requester = ResourcespaceHelper::RSpaceRequest.new(
+        rs_api_function: "get_resource_path",
+        parameters: format_parameters({
+    			"ref":hit['ref']
+    			})
+      )
+      requester.make_query()
+      hash_response = requester.post_query()
+      _hit["img"] = "<img class='d-block w-100' src='#{hash_response}'/>"
+    end
+    # puts _hit
+    tags << _hit
   end
   # puts tags
   return tags[0..4]

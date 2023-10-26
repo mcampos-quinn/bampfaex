@@ -35,7 +35,7 @@ module WorksHelper
   end
 
   def list_cinefiles_thumbs(film_title: film_title)
-    require 'net/http'
+    film_title = CGI.escape film_title
     url = URI.parse("https://webapps.cspace.berkeley.edu/solr/cinefiles-public/select?q=title_ss:%22#{film_title}%22")
     puts url
     req = Net::HTTP::Get.new(url.to_s)
