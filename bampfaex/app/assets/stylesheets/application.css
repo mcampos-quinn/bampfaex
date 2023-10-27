@@ -21,7 +21,7 @@
   margin: auto;
 }
 
-.carousel > a:hover {
+a:hover {
   background-color: transparent;
 }
 
@@ -29,10 +29,22 @@
   background-color: black;
 }
 
-.event-title-box {
+.event-info-box {
   background-color: #ddd;
 }
 
-.card-body > h1 {
+.info-box-text {
+
+}
+
+.title {
   font-weight: bolder;
+}
+
+.related-stuff {
+  background-color: #ddd;
+}
+
+.related-stuff-card {
+  background-color: white;
 }

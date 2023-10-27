@@ -90,13 +90,15 @@ end
 
 def make_resourcespace_preview_tags(hash_response)
   tags = []
+  counter = 0
+  puts "counter"
   hash_response.each do |hit|
-    # puts "hit"
+    puts counter
     # puts hit['url_pre']
     _hit = {}
     _hit['caption'] = ''
-    caption =''
-    # caption = get_caption(hit['ref'])
+    # caption =''
+    caption = get_caption(hit['ref'])
     if not caption.blank?
       _hit['caption'] = "<p class='carousel-caption'>#{caption}</p>"
     end
@@ -112,10 +114,14 @@ def make_resourcespace_preview_tags(hash_response)
       )
       requester.make_query()
       hash_response = requester.post_query()
-      _hit["img"] = "<img class='d-block w-100' src='#{hash_response}'/>"
+      _hit["img"] = "<img class='d-block w-100' style='max-height: 300px' src='#{hash_response}' alt='#{caption}'/>"
     end
     # puts _hit
     tags << _hit
+    counter = counter + 1
+    if counter == 5
+      break
+    end
   end
   # puts tags
   return tags[0..4]

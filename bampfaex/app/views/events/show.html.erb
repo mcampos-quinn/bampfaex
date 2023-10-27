@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-md-8">
       <!-- image and description column -->
       <div class="row">
@@ -10,58 +10,90 @@
           <% end %>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-3">
         <div class="col-sm-4">
-          <!-- title box -->
-          <div class="card event-title-box">
+        <!-- info box -->
+          <div class="card event-info-box">
               <div class="card-body">
-
                 <h2>
                   <%= @event.display_date %>
                 </h2>
                 <% unless @event.showtime_one_display.nil? %>
-                  <h3>
+                  <h4 class='info-box-text my-3'>
                     <%= @event.showtime_one_display %>
-                  </h3>
+                  </h4>
                 <% end %>
 
                 <% unless @event.showtime_two_display.nil? %>
-                  <h3>
+                  <h4 class='info-box-text my-3'>
                     <%= @event.showtime_two_display %>
-                  </h3>
+                  </h4>
                 <% end %>
                 <% unless @event.location.nil? %>
-                <h3>
-                  <%= @event.location %>
-                </h3>
+                  <h4 class='info-box-text my-3'>
+                    <%= @event.location %>
+                  </h4>
                 <% end %>
             </div>
           </div>
         </div>
         <div class="col-sm-8">
-          <!-- description area -->
+        <!-- description area -->
+          <!-- title -->
           <% unless @event.screening_title.nil? %>
-            <h1>
+            <h1 class='title'>
               <%= @event.screening_title %>
             </h1>
           <% end %>
+          <hr>
+
+          <!-- in-person guests -->
+          <% guests = list_event_relations(event_id: @event.id, target_model: "Person", role: 'in-person guest') %>
+          <% unless guests.to_a.empty? %>
+              <h2>In-person guests</h2>
+              <%= safe_join(guests.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
+          <% end %>
+
+          <!-- presenters -->
+          <% presenters = list_event_relations(event_id: @event.id, target_model: "Person", role: 'presenter') %>
+          <% unless presenters.to_a.empty? %>
+            <h2>Presented by:</h2>
+              <%= safe_join(presenters.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
+          <% end %>
+
+          <!-- performers -->
+          <% performers = list_event_relations(event_id: @event.id, target_model: "Person", role: 'performer') %>
+          <% unless performers.to_a.empty? %>
+              <h2>Performers:</h2>
+              <%= safe_join(performers.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
+          <% end %>
+
+          <hr>
+
+          <!-- description -->
           <% unless @event.description.nil? %>
             <%= @event.description&.html_safe %>
           <% end %>
-          <% unless @event.permission.nil? %>
-          <h3>Film permission:</h3>
-          <p>
-            <%= @event.permission %>
-          </p>
+          <!-- short description -->
+          <% unless @event.short_description.nil? %>
+            <%= @event.short_description&.html_safe %>
           <% end %>
-
+          <!-- legacy credit text -->
+          <% unless @event.legacy_credit_text.nil? %>
+            <h3>Additional credits:</h3>
+            <%= @event.legacy_credit_text&.html_safe %>
+          <% end %>
+          <!--  film permission -->
+          <% unless @event.permission.nil? %>
+          <h3>Film permission courtesy:</h3>
+            <%= @event.permission %>
+          <% end %>
+          <!-- print source -->
           <% unless @event.print_source.nil? %>
           <h3>Print Source</h3>
-          <p>
             <%= @event.print_source %>
-          </p>
           <% end %>
-
+          <!-- film runtime -->
           <% unless @event.film_runtime.nil? %>
           <h3>Film Runtime:</h3>
           <p>
@@ -72,76 +104,80 @@
       </div>
 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 related-stuff">
       <!-- related stuff column -->
+      <!-- related exhibitions -->
+      <% related_series = list_event_relations(event_id: @event.id, target_model: "Series", role: 'related exhibition') %>
+      <% unless related_series.to_a.empty? %>
+      <div class="row">
+        <div class="col">
+          <div class="card mt-3 rounded">
+            <div class="card-body rounded related-stuff-card">
+              <h2>Related Exhibitions</h2>
+              <%= safe_join(related_series.map { |s| link_to(s.series_title, "/series/#{s.id}") }, "<br/>".html_safe) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+      <!-- related film series -->
+      <% related_series = list_event_relations(event_id: @event.id, target_model: "Series", role: 'film series') %>
+      <% unless related_series.to_a.empty? %>
+      <div class="row">
+        <div class="col">
+          <div class="card mt-3 rounded">
+            <div class="card-body rounded related-stuff-card">
+              <h2>Part of the film series</h2>
+              <%= safe_join(related_series.map { |s| link_to(s.series_title, "/series/#{s.id}") }, "<br/>".html_safe) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+      <!-- films screened -->
       <% films_screened = list_event_relations(event_id: @event.id, target_model: "Work", role: 'film screened') %>
       <% unless films_screened.to_a.empty? %>
       <div class="row">
         <div class="col">
-          <h2>Films</h2>
-          <%= safe_join(films_screened.map { |w| link_to(w.title, "/works/#{w.id}") }, ", ".html_safe) %>
+          <div class="card mt-3 rounded">
+            <div class="card-body rounded related-stuff-card">
+              <h2>Films in this screening</h2>
+              <%= safe_join(films_screened.map { |w| link_to(w.title, "/works/#{w.id}") }, "<br/>".html_safe) %>
+            </div>
+          </div>
         </div>
+      </div>
       <% end %>
-    </div>
-    </div>
-
+      <!-- ia recordings -->
+      <% ia_recordings = list_internet_archive_recordings(event_id: @event.id) %>
+      <% unless ia_recordings.to_a.empty? %>
       <div class="row">
-
-        <div class="col-sm-7">
-          <div class="card">
+        <div class="col">
+          <div class="card mt-3 rounded">
             <div class="card-body">
-            <% films_screened = list_event_relations(event_id: @event.id, target_model: "Work", role: 'film screened') %>
-            <% unless films_screened.to_a.empty? %>
-                  <h2>Film details</h2>
-                    <%= safe_join(films_screened.map { |w| link_to(w.title, "/works/#{w.id}") }, ", ".html_safe) %>
-              </div>
-            <% end %>
+              <h2>
+                Listen to recordings of this event
+                <br>
+                <ul class="list-group">
+                  <%= safe_join(ia_recordings.map {|t| t.html_safe }, "").html_safe %>
+                </ul>
+              </h2>
+            </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-5">
-        <% ia_recordings = list_internet_archive_recordings(event_id: @event.id) %>
-        <% unless ia_recordings.to_a.empty? %>
-        <div class="card">
-          <div class="card-body">
-            <h2>
-              Listen to recordings of this event
-              <br>
-              <ul class="list-group">
-                <%= safe_join(ia_recordings.map {|t| t.html_safe }, "").html_safe %>
-              </ul>
-            </h2>
-          </div>
-          </div>
-        <% end %>
-      </div>
-      </div>
-
-
-      <% guests = list_event_relations(event_id: @event.id, target_model: "Person", role: 'in-person guest') %>
-      <% unless guests.to_a.empty? %>
-        <p>
-          <strong>In-person guests:</strong>
-          <%= safe_join(guests.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
-        </p>
       <% end %>
 
-      <% presenters = list_event_relations(event_id: @event.id, target_model: "Person", role: 'presenter') %>
-      <% unless presenters.to_a.empty? %>
-        <p>
-          <strong>Presented by:</strong>
-          <%= safe_join(presenters.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
-        </p>
-      <% end %>
+    <!-- end related stuff -->
+    </div>
+  </div>
 
-      <% performers = list_event_relations(event_id: @event.id, target_model: "Person", role: 'performer') %>
-      <% unless performers.to_a.empty? %>
-        <p>
-          <strong>Performers:</strong>
-          <%= safe_join(performers.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
-        </p>
-      <% end %>
+
+      
+
+      
       <!--
       <p>
         <strong>Import row id:</strong>
@@ -154,26 +190,11 @@
 
 
 
-      <% unless @event.short_description.nil? %>
-      <p>
-        <strong>Short Description:</strong>
-        <%= @event.short_description&.html_safe %>
-      </p>
-      <% end %>
+      
 
-      <% unless @event.legacy_credit_text.nil? %>
-      <p>
-        <strong>Legacy credit text:</strong>
-        <%= @event.legacy_credit_text&.html_safe %>
-      </p>
-      <% end %>
+      
 
-      <% unless @event.location.nil? %>
-      <p>
-        <strong>Location:</strong>
-        <%= @event.location %>
-      </p>
-      <% end %>
+      
 
 
     </div>

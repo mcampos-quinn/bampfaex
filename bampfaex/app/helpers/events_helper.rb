@@ -45,6 +45,7 @@ module EventsHelper
   def get_resourcespace_event_image_previews(event_id)
     _event = Event.find(event_id)
     event_title = _event.screening_title
+    date = _event.date
     if not event_title.nil?
       # extend ResourcespaceHelper
       request = ResourcespaceHelper::RSpaceRequest.new
