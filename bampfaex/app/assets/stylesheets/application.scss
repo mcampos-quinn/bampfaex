@@ -14,6 +14,42 @@
  *= require_self
  *= require simple_calendar
  */
+ :root {
+     --lavender: #ecd5e3;
+     --peach: #ffd8be;
+     --strawberry: #ffc5bf;
+     --lemon: #fff694;
+     --tangerine: #ffd494;
+     --grape: #cd75ff;
+     --mint: #c1ffba;
+     --grass: #93ff82;
+     --raspberry: #ffc2d3;
+ }
+
+.navbar {
+  background-color: var(--mint);
+}
+
+a:hover {
+  background-color: var(--grape);
+}
+
+.content-area {
+  background-color: var(--raspberry);
+}
+
+.related-stuff {
+  background-color: var(--lemon);
+}
+
+.related-stuff-card {
+  background-color: var(--tangerine);
+}
+
+.carousel {
+  background-color: var(--peach);
+}
+
 
 .carousel-item > img {
   /* display: flex;
@@ -21,8 +57,28 @@
   margin: auto;
 }
 
-a:hover {
+.carousel-control-next, .carousel-control-prev {
+    background-color: var(--lavender);
+}
+
+span .carousel-control-next-icon .carousel-control-prev-icon {
+  filter: drop-shadow(1px 0px 2px rgba(0, 0, 0, 0.8));
+}
+
+.card-body > a:hover {
   background-color: transparent;
+}
+
+// .dropdown-item a:hover {
+//   color: var(--grape);
+// }
+
+.dropdown-item:hover {
+  background-color: var(--peach);
+}
+
+.dropdown-menu {
+  background-color: var(--raspberry);
 }
 
 .carousel-control-next-icon .carousel-control-prev-icon {
@@ -30,7 +86,7 @@ a:hover {
 }
 
 .event-info-box {
-  background-color: #ddd;
+  background-color: var(--lemon);
 }
 
 .info-box-text {
@@ -39,12 +95,4 @@ a:hover {
 
 .title {
   font-weight: bolder;
-}
-
-.related-stuff {
-  background-color: #ddd;
-}
-
-.related-stuff-card {
-  background-color: white;
 }

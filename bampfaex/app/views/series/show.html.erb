@@ -1,75 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row mt-3 content-area">
+    <div class="col-md-8">
+      <!-- image and related events column -->
+      <div class="row">
+        <div class="col-sm">
+          <% @preview_tags = get_resourcespace_image_previews(@series.id) %>
+            <% unless @preview_tags.nil? %>
+            <%= render partial: "/layouts/preview_carousel", locals: {preview_tags: @preview_tags} %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <% events = list_series_relations(series_id: @series.id, target_model: "Event", role: 'related exhibition') %>
+          <% unless events.to_a.empty? %>
+          <div class="card event-info-box">
+            <div class="card-body rounded related-stuff-card">
+              <h2>Related Events:</h2>
+              <%= safe_join(events.map { |p| link_to(p.display_date, "/events/#{p.id}") }, ", ".html_safe) %>
+            </div>
+          </div>
+          <% end %>
+        </div>
 
-<p>
-  <strong>Series start date:</strong>
-  <%= @series.series_start_date %>
-</p>
+      </div>
+    </div>
+    <div class="col-md-4 related-stuff">
+      <!-- title and description column -->
+      <div class="row">
+        <div class="col">
+          <div class="card mt-3 rounded">
+            <div class="card-body rounded related-stuff-card">
+              <h2><%= @series.series_title %></h2>
+              <h4><%= @series.start_date_display() %> — <%= @series.end_date_display() %></h4>
+              <h5><%= @series.series_type %></h5>
+              <% unless @series.location.nil? %>
+                <h5><%= @series.location %></h5>
+              <% end %>
+              <% curators = list_series_people(series_id: @series.id, role: 'curator') %>
+              <% unless curators.nil? %>
+                <h4>Curated by <%= safe_join(curators.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %></h4>
+              <% end %>
+              <% artists = list_series_people(series_id: @series.id, role: 'artist') %>
+              <% unless artists.nil? %>
+                <h4>Artists: <%= safe_join(artists.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %></h4>
+              <% end %>
+              <% unless @series.outside_organizer.nil? %>
+                <h5>Organized by <%= @series.outside_organizer %></h5>
+              <% end %>
+              <% unless @series.series_credits.nil? %>
+                <h5>Credits: <%= @series.series_credits %></h5>
+              <% end %>
+            </div>
+          </div>
+          <% unless @series.series_description.nil? %>
+          <div class="card my-3 rounded">
+            <div class="card-body rounded related-stuff-card">
+                <%= @series.series_description %>
+            </div>
+          </div>
+          <% end %>
+      </div>
+  </div>
+</div>
 
-<p>
-  <strong>Series end date:</strong>
-  <%= @series.series_end_date %>
-</p>
-
-<p>
-  <strong>Series type:</strong>
-  <%= @series.series_type %>
-</p>
-
-<% events = list_series_relations(series_id: @series.id, target_model: "Event", role: 'related exhibition') %>
-<% unless events.to_a.empty? %>
-  <p>
-    <strong>Related Events:</strong>
-    <%= safe_join(events.map { |p| link_to(p.display_date, "/events/#{p.id}") }, ", ".html_safe) %>
-  </p>
-<% end %>
-
-<p>
-  <strong>Series title:</strong>
-  <%= @series.series_title %>
-</p>
-
-<% @preview_tags = get_resourcespace_image_previews(@series.id) %>
-
-
-
-<% unless @preview_tags.nil? %>
-  <%= render partial: "/layouts/preview_carousel", locals: {preview_tags: @preview_tags} %>
-<% end %>
-
-<p>
-  <strong>Series description:</strong>
-  <%= @series.series_description %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @series.location %>
-</p>
-
-<p>
-  <strong>Exhibition curators:</strong>
-  <%= safe_join(list_series_people(series_id: @series.id, role: 'curator').map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
-</p>
-
-<p>
-  <strong>Artists:</strong>
-  <%= safe_join(list_series_people(series_id: @series.id, role: 'artist').map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %>
-</p>
-
-<p>
-  <strong>Series credits:</strong>
-  <%= @series.series_credits %>
-</p>
-
-<p>
-  <strong>Series organizer:</strong>
-  <%= @series.outside_organizer %>
-</p>
-
-<p>
+<!-- <p>
   <strong>Series short description:</strong>
   <%= @series.series_short_description %>
-</p>
-
-<%= link_to 'Edit', edit_series_path(@series) %> |
-<%= link_to 'Back', series_index_path %>
+</p> -->
+<div>
+  <%= link_to 'Edit', edit_series_path(@series) %> |
+  <%= link_to 'Back', series_index_path %>
+</div>
