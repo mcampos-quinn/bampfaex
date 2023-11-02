@@ -2,3 +2,5 @@
 __py*
 .~*
 secrets.yml
+*.sqlite-shm
+*.sqlite-wal
