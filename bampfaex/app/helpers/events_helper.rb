@@ -17,7 +17,7 @@ module EventsHelper
     return relateds
   end
 
-  def list_internet_archive_recordings(event_id: event_id)
+  def list_internet_archive_recordings(event_id: @event_id)
     require 'net/http'
     _event = Event.find(event_id)
     date = _event.date

@@ -51,7 +51,7 @@
                 <h5><%= @series.location %></h5>
               <% end %>
               <% curators = list_series_people(series_id: @series.id, role: 'curator') %>
-              <% unless curators.nil? %>
+              <% unless curators.to_a.empty? %>
                 <h4>Curated by <%= safe_join(curators.map { |p| link_to(p.display_name, "/people/#{p.id}") }, ", ".html_safe) %></h4>
               <% end %>
               <% artists = list_series_people(series_id: @series.id, role: 'artist') %>
