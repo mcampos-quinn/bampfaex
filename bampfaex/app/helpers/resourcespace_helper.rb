@@ -4,11 +4,11 @@ module ResourcespaceHelper
     def initialize(rs_api_function: nil, parameters: nil)
       @rs_api_function=rs_api_function
       @parameters=parameters
-      @rs_user_id=Rails.application.config.secrets['rs_user_id']
+      @rs_user_id=Rails.application.config_for(:secrets).with_indifferent_access['rs_user_id']
       # puts "#{@rs_user_id} ID "*10
-      @rs_api_key=Rails.application.config.secrets['rs_api_key']
+      @rs_api_key=Rails.application.config_for(:secrets).with_indifferent_access['rs_api_key']
       # puts "#{@rs_api_key} Key "*10
-      @rs_url=Rails.application.config.secrets['rs_url']
+      @rs_url=Rails.application.config_for(:secrets).with_indifferent_access['rs_url']
       @query_url=nil
     end
 
